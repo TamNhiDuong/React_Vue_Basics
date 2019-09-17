@@ -17,9 +17,11 @@ class App extends Component {
   inputChanged = (event) => {
     this.setState({[event.target.name]: event.target.value});
   }
+  
 
   addTodo = (event) => {
     event.preventDefault();
+    //const strDate = this.state.date.getDate() + "." + (this.state.date.getMonth()+1) + "." + this.state.date.getFullYear(); 
     const newTodo = {description: this.state.description, date: this.state.date};
     this.setState({
     todos: [...this.state.todos, newTodo]
