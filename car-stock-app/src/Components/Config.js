@@ -2,12 +2,12 @@ import firebase from 'firebase';
 
 //Define configuration settings 
 const firebaseConfig = {
-    apiKey: "AIzaSyB18x890fe2mIgNB_23q3K0623m2BKBj38",
+    apiKey: "",
     authDomain: "",
-    databaseURL: "https://carstockrest.herokuapp.com/cars",
-    projectId: "car-stock-app",
+    databaseURL: "",
+    projectId: "",
     storageBucket: "",
-    messagingSenderId: "329416725193"
+    messagingSenderId: ""
 };
 firebase.initializeApp(firebaseConfig);
 export const firebaseAuth = firebase.auth;
