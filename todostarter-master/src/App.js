@@ -7,6 +7,17 @@ import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+import 'date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 
 class App extends Component {
   constructor(props) {
@@ -31,13 +42,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Simple Todolist</h2>
-        </div>
+         <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6">
+            My Todolist
+          </Typography>
+        </Toolbar>
+      </AppBar>
         <div>
-          <form onSubmit={this.addTodo}>
 
+          <form onSubmit={this.addTodo}>
             <TextField 
+            style={{marginBottom: 10}}
             name="description" 
             type="text"
             placeholder="Description"
@@ -46,12 +62,14 @@ class App extends Component {
             <br></br>
 
             <TextField 
+            style={{marginBottom: 10}}
             name="date" 
             placeholder="Duedate" 
             type="date"
             onChange={this.inputChanged} 
             value={this.state.date}/>
             <br></br>
+
             <Button 
           variant="contained" 
           color="primary"
@@ -68,6 +86,7 @@ class App extends Component {
               <TableCell>Description</TableCell>
            </TableRow>
          </TableHead>
+
          <TableBody>
            {this.state.todos.map((item, index) =>
            <TableRow key={index}>
