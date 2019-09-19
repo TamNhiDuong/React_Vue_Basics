@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as BrowserRounter, Route, Switch } from "react-router-dom"; 
+import { BrowserRouter as BrowserRouter, Route, Switch } from "react-router-dom"; 
 import Navigator from './Navigator';
 import"bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,9 +17,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Welcome to React Router</header>
-  <BrowserRounter>
+  <BrowserRouter>
     <div>
       <Navigator />
+
       <Switch>
       <Route path="/" exact component={Index} />
       <Route path="/about" component={About} />
@@ -28,7 +29,7 @@ function App() {
       </Switch>
       
     </div>
-  </BrowserRounter>
+  </BrowserRouter>
   </div>
   );
 }

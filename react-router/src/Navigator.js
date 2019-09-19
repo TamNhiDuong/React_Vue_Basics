@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import"bootstrap/dist/css/bootstrap.min.css";
 const Navigator = props => {
     return (
-        
+        //Boosstrap
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             
             <Link className="navbar-brand" to ="/" >My React Page</Link>
