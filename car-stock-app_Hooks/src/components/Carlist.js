@@ -4,6 +4,7 @@ import 'react-table/react-table.css';
 import { Button } from '@material-ui/core';
 import { Snackbar } from "@material-ui/core";
 import AddCar from "./AddCar";
+import EditCar from "./EditCar"; 
 
 export default function Carlist () {
 const [cars, setCars] = useState([]);
@@ -56,6 +57,21 @@ const deleteCar = (link) => {
     }
 }
 
+const editCar = (link, editedCar) => {
+    fetch(link, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editedCar)
+    })
+    .then(res => fetchData())
+    .then(res => setMessage('Car edited!'))
+    .catch(err => console.error(err))
+   
+
+};
+
 
 const columns = [
     { Header: 'Brand', accessor: 'brand'},
@@ -64,11 +80,14 @@ const columns = [
     { Header: 'Fuel', accessor: 'fuel'},
     { Header: 'Year', accessor: 'year'},
     { Header: 'Price', accessor: 'price'},
-    //Delete car 1: First step- Add button-add Onclick that call deleteCar- taking link as value
+    //Delete-step1: Add button-add Onclick that call deleteCar- taking link as value
     {   accessor: '_links.self.href',
-        Cell: ({value}) => 
-        <Button color="secondary" 
-        onClick={() => deleteCar(value)}>Delete</Button>
+        Cell: ({value}) => <Button color="secondary" onClick={() => deleteCar(value)}>Delete</Button>
+    },
+    //Edit-step2: 
+    {   accessor: '_links.self.href',
+    Cell: ({value,row}) => <EditCar editCar={editCar} link={value} clickedCar={row}/>
+
     }
 ]
 
