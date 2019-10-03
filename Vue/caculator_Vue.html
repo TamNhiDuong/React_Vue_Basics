@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Calculator
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+
+<body>
+  <div id= "input">
+      Result: {{result}} <br/>
+      <input v-model="firstnumber">
+      <input v-model="secondnumber">
+      <button v-on:click="increment">+</button>
+      <button v-on:click="decrement">-</button>
+        
+    
+          <script>
+              var app= new Vue({
+                  el: '#input',
+                  data: {
+                      firstnumber: "",
+                      secondnumber: "", 
+                      result: ""
+                  },
+                  methods: {
+                    increment: function() {
+                      this.result = parseInt(this.firstnumber) + parseInt(this.secondnumber);},
+                    decrement: function() {
+                      this.result = parseInt(this.firstnumber) - parseInt(this.secondnumber)
+                    }
+                    }
+                  
+                  })
+            
+
+              
+           </script>
+  </div>
+   
+</body>
+</html> 
+
