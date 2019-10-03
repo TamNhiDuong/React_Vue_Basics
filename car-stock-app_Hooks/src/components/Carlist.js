@@ -5,6 +5,8 @@ import { Button } from '@material-ui/core';
 import { Snackbar } from "@material-ui/core";
 import AddCar from "./AddCar";
 import EditCar from "./EditCar"; 
+import { CSVLink } from "react-csv";
+import Grid from '@material-ui/core/Grid';
 
 export default function Carlist () {
 const [cars, setCars] = useState([]);
@@ -12,10 +14,6 @@ const [open, setOpen] = React.useState(false);
 const [message, setMessage] = useState(""); 
 
 //Snackbar functions
-const handleClick = () => {
-    setOpen(true);
-  };
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -82,18 +80,29 @@ const columns = [
     { Header: 'Price', accessor: 'price'},
     //Delete-step1: Add button-add Onclick that call deleteCar- taking link as value
     {   accessor: '_links.self.href',
-        Cell: ({value}) => <Button color="secondary" onClick={() => deleteCar(value)}>Delete</Button>
+        Cell: ({value}) => <Button size= "small" color="secondary" onClick={() => deleteCar(value)}>Delete</Button>
     },
-    //Edit-step2: 
+    //Edit-step2: render the whole row
     {   accessor: '_links.self.href',
-    Cell: ({value,row}) => <EditCar editCar={editCar} link={value} clickedCar={row}/>
+    Cell: ({value, row}) => <EditCar editCar={editCar} link={value} clickedCar={row}/>
 
     }
 ]
 
 return (
 <div>
+<Grid container>
+    <Grid item>
     <AddCar saveCar={saveCar} />
+    </Grid>
+
+    <Grid item style={{padding:15}}>
+    <CSVLink data={cars} separator={";"}>Download</CSVLink>
+    </Grid>
+
+
+</Grid>
+    
     <ReactTable 
     data={cars} 
     columns={columns} /> 
