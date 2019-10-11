@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <TodoList/>
+    <Carlist/>
   </div>
 </template>
 
 <script>
-import TodoList from './components/TodoList'; 
+
+import Carlist from './components/Carlist';
 
 export default {
   name: 'app',
   components: {
-    TodoList
+    Carlist
   }
 }
 </script>

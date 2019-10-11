@@ -79,6 +79,7 @@ const columns = [
     { Header: 'Year', accessor: 'year'},
     { Header: 'Price', accessor: 'price'},
     //Delete-step1: Add button-add Onclick that call deleteCar- taking link as value
+    //Value is Accessor
     {   accessor: '_links.self.href',
         Cell: ({value}) => <Button size= "small" color="secondary" onClick={() => deleteCar(value)}>Delete</Button>
     },

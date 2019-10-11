@@ -69,6 +69,7 @@ export default class componentName extends Component {
             { Header: "Year", accessor: "year"},
             { Header: "Price", accessor: "price"},
             { Header: "Remove", 
+            //Value is Accessor
             accessor: "_links.self.href",
             filterble: "false",
             sortable: "false",
