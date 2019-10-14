@@ -1,8 +1,16 @@
 <template>
-  <div id="app">
-    <Carlist/>
-  </div>
-</template>
+<v-app>
+  <v-AppBar app>
+    <v-toolbar-title class="headline">
+      <span>CARLIST</span>
+      </v-toolbar-title>
+      </v-AppBar>
+      
+      <v-content>
+        <Carlist/>
+        </v-content>
+        </v-app>
+        </template>
 
 <script>
 
