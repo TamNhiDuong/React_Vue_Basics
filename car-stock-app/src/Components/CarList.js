@@ -30,6 +30,7 @@ export default class componentName extends Component {
         console.log(carLink.original._links.self.href); 
     };
 
+   
     updateCar = (link, updateCar) => {
         fetch(link, {
             method: "PUT",
