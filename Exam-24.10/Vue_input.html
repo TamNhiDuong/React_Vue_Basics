@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "input">
+            <input type="text" v-model="input">
+            <button v-on:click="add">Add</button>
+            <table>
+                    <tbody>
+                        <tr v-for="(item, index) in array" v-bind:key="index">
+                        <td>{{item.input}}</td> <button v-on:click="clear(index)">Clear</button></tr>
+                    </tbody>
+                </table>
+
+                <script>
+                    var app= new Vue({
+                        el: '#input',
+                        data: {
+                            input: "",
+                            array: [], 
+                        },
+                        methods: {
+                          add: function() {
+                            this.array.push({input: this.input});},
+                          clear: function(idx) {
+                            this.array.splice(idx, 1);   
+                            this.array([...input]);  
+                          }
+                          }
+                        
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 
+      
+      
+

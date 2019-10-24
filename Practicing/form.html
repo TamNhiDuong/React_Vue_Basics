@@ -27,7 +27,7 @@ const value = event.target.value;
     setItem({
         ...item,
         [event.target.name]: value
-    });
+    }); 
 };
 const add = (event) => {
     event.preventDefault();
@@ -82,7 +82,7 @@ const itemRows = forms.map((form, index) => (
                     <th>Delete</th>
                 </tr>
                 {itemRows}  
-            </tbody>
+            </tbody>  
         </table>
         </div>
         
