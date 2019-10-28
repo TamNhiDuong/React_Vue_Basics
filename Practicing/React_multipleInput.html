@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Practice Hooks-Listing</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+class Listing extends React.Component {
+    //if not using class, then have to use Reducer in Hooks, it is much complicated
+    constructor(props) {
+        super(props);
+        this.state ={
+            user: '',
+            email: '',
+            shouldShow: false
+        };
+    }
+
+    inputChange = event => {
+        this.setState({[event.target.name] : event.target.value}); 
+    }
+
+    show = event => {
+        event.preventDefault();
+        this.setState({shouldShow: true});
+        console.log('clicked');
+    }
+    render() {
+        const result = <h1>{this.state.user} {this.state.email}</h1>
+        return (
+        <div>
+            <form>
+                <lable>
+                    Name: 
+                    <input type="text" name='user' onChange={this.inputChange}/>
+                </lable>
+
+                <lable>
+                    Email:
+                    <input type="text" name='email' onChange={this.inputChange}/>
+                </lable>
+
+                <button onClick={this.show}>Show</button>
+                {this.state.shouldShow ? result: null}
+               
+            </form>
+        </div>
+    )
+    }
+}
+
+ReactDOM.render(<Listing />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
