@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "input">
+            <input type="text" v-model="input">
+            <button v-on:click="add">Add</button>
+            <button v-on:click="clear">Clear</button>
+            {{shouldPrint ? input : null}}
+            
+                <script>
+                    var app= new Vue({
+                        el: '#input',
+                        data: {
+                            input: "", 
+                            shouldPrint: false,
+                            output: '',
+                        },
+                        methods: {
+                          add: function() {
+                            this.shouldPrint = true; 
+                            },
+                          clear: function() {
+                            this.shouldPrint = false; 
+                          }
+                          }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 
+      
+      
+

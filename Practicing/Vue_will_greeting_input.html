@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "app">
+                <label>
+                        Name: <input type="text" v-model="inputName">
+                </label>
+                
+                <h1 v-if="inputName">Hello {{inputName}}</h1> 
+                <h1 v-else></h1>
+        
+                <script>
+                        var app= new Vue({
+                            el: '#app',
+                            data: {
+                                inputName: '', 
+                                greeting: '', 
+                            },
+
+                             methods: {
+
+                            }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 

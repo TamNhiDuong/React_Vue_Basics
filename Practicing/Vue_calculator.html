@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "app">
+            <lable>First number:
+                <input type="number" v-model="firstNumber"/>
+            </lable>
+            <br>
+            <button v-on:click="add">+</button>
+            <br>
+            <button v-on:click="substract">-</button>
+            <br>
+
+            <lable>Second number: 
+                <input type="number" v-model="secondNumber"/>
+            </lable>
+            <h1>Result {{result}}</h1>
+            <button v-on:click="reset">RESET</button>
+
+                <script>
+                        var app= new Vue({
+                            el: '#app',
+                            data: {
+                                firstNumber: '',
+                                secondNumber: '',
+                                result: '',
+                            },
+                            methods: {
+                                add: function() {
+                                    this.result = 
+                                    parseInt(this.firstNumber) + parseInt(this.secondNumber);
+                                }
+                                ,substract: function() {
+                                   this.result = 
+                                   parseInt(this.firstNumber) - parseInt(this.secondNumber);  
+                                },
+                                reset: function() {
+                                    this.result= '';
+
+                                }
+
+
+                            }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 

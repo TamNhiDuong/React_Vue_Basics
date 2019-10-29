@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</header>
+<body>
+        <div id= "app">
+             <h1>Fetch users</h1>
+             {{name}} <br>
+             {{city}} <br>
+             {{companyName}}
+               
+                <script>
+                var app= new Vue({
+	               data: {
+		             name: '',
+                 city: '',
+                 companyName: '',
+	                   },
+	
+                created() {
+		            fetch('https://jsonplaceholder.typicode.com/users')
+		           .then(data => data.json())
+		           .then(responseData => {this.name = responseData[0].name;
+                                      this.city = responseData[0].address.city;
+                                      this.companyName = responseData[0].company.name});
+                   }
+                   }).$mount('#app');
+                   
+                 </script>
+        </div>         
+      </body>
+      </html> 
+      

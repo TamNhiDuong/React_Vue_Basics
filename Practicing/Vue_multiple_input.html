@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "app">
+            <label>
+                Name: <input type="text" v-model="inputName">
+            </label>
+
+            <lable>
+                Email: <input type="text" v-model="inputEmail">
+            </lable>
+                <button v-on:click="add">Add</button>
+                <button v-on:click="lengthCount">Count length</button>
+
+                {{show ? inputName: null}}
+                {{show ? inputEmail: null}}
+                {{lengthOutput}}
+
+                <script>
+                        var app= new Vue({
+                            el: '#app',
+                            data: {
+                                inputName: "", 
+                                inputEmail: '',
+                                show: false,
+                                lengthOutput: '',
+                            },
+
+                            methods: {
+                                add: function() {
+                                    this.show = true
+                                },
+                                lengthCount: function() {
+                                    this.lengthOutput = this.inputName.length + this.inputEmail.length; 
+
+                                }
+                            }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 

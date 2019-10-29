@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "app">
+                <label>
+                        Name: <input type="text" v-model="inputName">
+                </label>
+                <button v-on:click="show">Show greeting</button>
+                {{showGreeting ? "Hello " + inputName : null}}
+            
+                <script>
+                        var app= new Vue({
+                            el: '#app',
+                            data: {
+                                inputName: '', 
+                                showGreeting: false, 
+                            },
+
+                             methods: {
+                                 show: function() {
+                                     this.showGreeting = true; 
+                                 }
+
+                            }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html>
