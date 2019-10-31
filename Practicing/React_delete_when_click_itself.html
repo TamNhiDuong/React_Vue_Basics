@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Delete char when click itself</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+const Listing = () => {
+    const[input, setInput]= React.useState(''); 
+
+    const inputChange = event => {
+        event.preventDefault();
+        setInput(event.target.value); 
+    }
+
+    const deleteCharHandler = index => {
+        const string = input.split('');
+        string.splice(index, 1);
+        const updatedString = string.join('');
+        setInput(updatedString); 
+    }
+
+    const charList = input.split('').map((char, index) => (
+             <div>
+            {char}
+            <button onClick = {() => deleteCharHandler(index)}>delete</button>
+           </div>
+        ));
+
+    return (
+      <div>
+        <lable>
+            Input: <input type='text' value={input} onChange={inputChange}/>
+        </lable>
+        {charList}
+      </div> 
+        
+    )
+
+}
+ReactDOM.render(<Listing />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

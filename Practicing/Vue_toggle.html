@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "app">
+                <input type="text" v-model="input">
+                <button v-on:click="toggle">Toggle</button>
+                {{show ? input: null}}
+
+                <script>
+                        var app= new Vue({
+                            el: '#app',
+                            data: {
+                                input: '',
+                                show: false
+                            },
+
+                            methods: {
+                                toggle: function() {
+                                    const shouldShow= !this.show;
+                                    this.show = shouldShow; 
+                                }
+
+                            }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 

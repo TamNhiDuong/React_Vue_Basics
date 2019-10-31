@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Delete single char</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+const Listing = () => {
+    const[input, setInput] = React.useState('');
+    const[strLength, setStrLength] = React.useState('');
+   // const[comment, setComment] = React.useState('');
+
+    const inputChange = event => {
+        event.preventDefault(); 
+        setInput(event.target.value);
+    }
+
+    const deleteCharHandler = event => {
+        const string = input.split('');
+        string.splice(string.length-1, 1);
+        const newString = string.join(''); 
+        setInput(newString); 
+    }
+    let comment = 'String is long enough';
+    if (input.length <= 5) {
+            comment = 'String is too short'; 
+        }
+
+    const stringLength = event => {
+        const strLength = input.length; 
+        setStrLength(strLength); 
+    }
+    
+
+    return (
+        <div>
+        <lable>
+        Input: <input type='text' onChange={inputChange} value= {input}/> 
+        </lable>
+        <button onClick={deleteCharHandler}>Clear char</button> 
+        <button onClick={stringLength}>Show length</button>
+        <h3>{input}</h3>
+        <h3>String length: {strLength}</h3>
+        <h2>{comment}</h2>
+        </div> 
+        
+    )
+}
+ReactDOM.render(<Listing />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
