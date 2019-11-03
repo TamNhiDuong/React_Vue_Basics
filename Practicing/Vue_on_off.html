@@ -8,20 +8,22 @@
 </header>
 <body>
         <div id= "app">
-                <label>
-                        Name: <input type="text" v-model="inputName">
-                </label>
-                
-                <h1 v-if="inputName">Hello{{inputName}}</h1> 
-                <h1 v-else></h1>
-        
+                <button v-on:click="toggle">{{click ? 'OFF' : 'ON'}}</button>
+
                 <script>
                         var app= new Vue({
                             el: '#app',
                             data: {
-                                inputName: '', 
+                                click: false, 
                             },
 
+                            methods: {
+                                toggle: function() {
+                                    const clicked = !this.click;
+                                    this.click = clicked; 
+                                }
+
+                            }  
                         })
                  </script>
         </div>         
