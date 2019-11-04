@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Practice Hooks-Listing</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+const Listing = () => {
+    const [randomNumber, setRandomNumber] = React.useState('');
+
+    const handleClick = event => {
+        const min = 1;
+        const max = 100;
+        //const random = min + Math.random() * (max-min);
+        const random = Math.floor(Math.random() * max) + min; 
+        setRandomNumber(random);
+    }
+    return (
+      <div>
+      <button onClick={handleClick}>Generate random number</button>
+      <h1>Random number from 1-100: {randomNumber}</h1>
+      </div> 
+        
+    )
+
+}
+ReactDOM.render(<Listing />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

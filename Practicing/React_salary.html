@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Practice Hooks-Listing</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+const Listing = () => {
+    const[salary, setSalary]= React.useState('');
+    const[afterTaxSalary, setAfterTaxSalary]= React.useState(''); 
+
+    const inputChanged = event => {
+        setSalary(event.target.value);
+    }
+
+    let afterTax = 0;
+
+    const handleClick = event => {
+        const currentValue = salary;
+        console.log(currentValue);
+        if (currentValue >= 2000) {
+            afterTax = parseInt(currentValue) - parseInt(currentValue)*5/100; 
+            console.log(afterTax);
+            setAfterTaxSalary(afterTax); 
+        }
+        else {
+            afterTax = parseInt(currentValue) - parseInt(currentValue)*2/100; 
+            console.log(afterTax);
+            setAfterTaxSalary(afterTax); 
+        }
+    }
+
+    return (
+      <div>
+        <lable>
+            Input Salary:
+            <input type='text' value={salary} onChange={inputChanged}/>
+            <button onClick={handleClick}>Calculate after tax salary</button> 
+            {afterTaxSalary}
+        </lable>
+      </div> 
+        
+    )
+
+}
+ReactDOM.render(<Listing />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

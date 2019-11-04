@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "app">
+                <label>
+                    Salary: <input type="text" v-model="salary">
+                </label>
+                <button v-on:click="count">After tax salary</button>
+                <h1>After tax: {{afterTaxSalary}}</h1>
+
+                <script>
+                        var app= new Vue({
+                            el: '#app',
+                            data: {
+                                salary: '',
+                                afterTaxSalary: '',
+                            },
+
+                            methods: {
+                                count: function(){
+                                    if (this.salary >= 2000){
+                                        this.afterTaxSalary= parseInt(this.salary) - parseInt(this.salary) * 5/100;
+                                    }
+                                    else {
+                                        this.afterTaxSalary= parseInt(this.salary) - parseInt(this.salary) * 2/100;
+                                    }
+                                
+                                }
+
+                            }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 
