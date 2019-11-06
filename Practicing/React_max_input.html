@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Practice Hooks-Listing</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+const Listing = () => {
+    const[forms, setForms] = React.useState([]);
+    const[item, setItem] = React.useState({
+        name: '',
+        age: ''
+    });
+    const[maxAge, setMaxAge]= React.useState('');
+    const[maxAgeName, setMaxAgeName]= React.useState('');
+
+const inputChanged = (event) => {
+const value = event.target.value;
+    setItem({
+        ...item,
+        [event.target.name]: value
+    }); 
+};
+const add = (event) => {
+    event.preventDefault();
+    const newArr = [...forms];
+    newArr.splice(0, 0, {name : item.name, age: item.age}); 
+    setForms(newArr);
+};
+const itemRows = forms.map((form, index) => (
+          <tr key={index}>
+            <td>{form.name}</td>
+            <td>{form.age}</td>
+          </tr>
+        ));
+
+let maxValue = 0; 
+let maxObjName; 
+
+const findMaxAge= event => {forms.forEach(obj => {
+        if (obj.age > maxValue){
+            maxValue = obj.age; 
+            maxObjName = obj.name; 
+            setMaxAge(maxValue); 
+            setMaxAgeName(maxObjName);
+        }
+        console.log(maxValue);
+    }
+    )}; 
+
+    return (
+        <div>
+            <div className="form">
+         <form onSubmit={add}>
+            <lable>
+                Name:<input type="text" name = "name" value={item.name} onChange={inputChanged} />
+            </lable>
+
+            <lable>
+                Age:<input type="text" name = "age" value={item.age} onChange={inputChanged} />
+            </lable>
+           
+            <input type="submit" value="Add"/>
+        </form>
+        </div>
+
+        //output
+        <table>
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+                {itemRows}  
+            </tbody>  
+        </table>
+        <button onClick={findMaxAge}>Max Age</button> 
+        {maxAge}
+        {maxAgeName}
+        </div>
+        
+    )
+}
+ReactDOM.render(<Listing />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
