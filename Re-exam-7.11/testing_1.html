@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Practice Hooks-Listing</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+const Listing = () => {
+    const [username,setUsername] = React.useState(''); 
+    const [age,setAge] = React.useState(''); 
+    const [show, setShow] = React.useState(false); 
+
+    const inputNameChange = event => {
+        setUsername(event.target.value);
+    }
+    const inputAgeChange = event => {
+        setAge(event.target.value);
+    }
+    let header = '';
+        if (username && age >= 18) {
+            header ='Hello' + ' ' + username;
+        }
+        else if (username && age < 18) {
+            header = 'You are too young'; 
+        }
+        else {
+            header = ''; 
+        }
+ 
+    const showGreeting = event => {
+        event.preventDefault();
+        setShow(true);
+    }
+
+    
+    return (    
+        <div>
+        {show ? header : null}
+  
+        <form onSubmit={showGreeting}>
+        <lable>
+        Username: <input type = "text" value={username} onChange={inputNameChange}/>
+        </lable>
+        <br></br>
+
+        <lable>
+        Age: <input type = "number" value={age} onChange={inputAgeChange}/>
+        </lable>
+        <input type="submit" value="Submit"/>
+        </form>  
+        </div>
+    )
+
+}
+ReactDOM.render(<Listing />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

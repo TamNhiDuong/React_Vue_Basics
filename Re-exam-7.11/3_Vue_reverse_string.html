@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>
+    Vue Input
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</header>
+<body>
+        <div id= "app">
+               
+                    <input type="text" v-model="input">
+                    <button v-on:click="reverse">Reverse</button>
+                    {{output}}
+                
+
+                <script>
+                        var app= new Vue({
+                            el: '#app',
+                            data: {
+                                input: '',
+                                output: '',
+                                show: false,
+                            },
+
+                            methods: {
+                                reverse: function() {
+                                     this.output = this.input.split("").reverse().join("");
+                                 }
+                            }  
+                        })
+                 </script>
+        </div>         
+      </body>
+      </html> 

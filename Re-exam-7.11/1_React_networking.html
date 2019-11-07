@@ -23,35 +23,36 @@
           };
 		
 	const url =
-          "https://api.github.com/search/repositories?q=" + input;
+          "https://api.kirjastot.fi/v4/library?city.name=" + input;
 		
  
 	const fetchSearch = () => {
 		fetch(url)
 		.then(response => response.json())
 		.then(data => setArray(data.items))
-    .then(data => console.log(data.items))
 		.catch(err => console.error(err))
 	};
 
 		
 	 const itemRows = array.map((number, index) => (
           <tr key={index}>
-            <td>{number.full_name}</td>
-            <td>{number.html_url}</td>
+            <td>{number.name}</td>
+            <td>{number.address.street}</td>
+            <td>{number.address.zipcode}</td>
           </tr>
         ));
 	
 	return(
 		<div>
 			<input type="text" value={input} onChange={inputChanged} />
-	        <button onClick={fetchSearch}>Search</button>
+	        <button onClick={fetchSearch}>Fetch</button>
 											
             <table>
               <tbody>
                 <tr>
                   <th>Name</th>
-                  <th>URL</th>
+                  <th>Street address</th>
+                  <th>Zipcode</th>
                 </tr>
                 {itemRows}
               </tbody>
